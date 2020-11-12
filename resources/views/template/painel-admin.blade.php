@@ -1,22 +1,5 @@
-<?php
-
-//variaveis para o menu
-$pag = @$_GET["pag"];
-$menu1 = "corretores";
-$menu2 = "tesoureiros";
-$menu3 = "cidade";
-$menu4 = "bairro";
-$menu5 = "tipo";
-$menu6 = "tarefas";
-$menu7 = "vendas";
-$menu8 = "alugueis";
-
-?>
-
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
 
@@ -29,19 +12,19 @@ $menu8 = "alugueis";
     <title>Painel Administrativo</title>
 
     <!-- Custom fonts for this template-->
-    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ URL::asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="{{ URL::asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
 
-    <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="{{ URL::asset('vendor/dataTables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 
 
     <!-- Bootstrap core JavaScript-->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ URL::asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ URL::asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <link rel="shortcut icon" href="../../img/favicon0.ico" type="image/x-icon">
     <link rel="icon" href="../../img/favicon0.ico" type="image/x-icon">
@@ -84,9 +67,8 @@ $menu8 = "alugueis";
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">PESSOAS:</h6>
-                        <a class="collapse-item" href="index.php?pag=<?php echo $menu1 ?>">Corretores</a>
-                        <a class="collapse-item" href="index.php?pag=<?php echo $menu2 ?>">Tesoureiros</a>
+                        <a class="collapse-item" href="">Instrutores</a>
+                        <a class="collapse-item" href="">Recepcionistas</a>
                     </div>
                 </div>
             </li>
@@ -100,9 +82,9 @@ $menu8 = "alugueis";
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Dados Imóveis:</h6>
-                        <a class="collapse-item" href="index.php?pag=<?php echo $menu3 ?>">Cidade</a>
-                        <a class="collapse-item" href="index.php?pag=<?php echo $menu4 ?>">Bairro</a>
-                        <a class="collapse-item" href="index.php?pag=<?php echo $menu5 ?>">Tipo</a>
+                        <a class="collapse-item" href="">Cidade</a>
+                        <a class="collapse-item" href="">Bairro</a>
+                        <a class="collapse-item" href="">Tipo</a>
 
                     </div>
                 </div>
@@ -117,23 +99,22 @@ $menu8 = "alugueis";
             </div>
 
 
-
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="index.php?pag=<?php echo $menu6 ?>">
+                <a class="nav-link" href="">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Agenda Corretores</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="index.php?pag=<?php echo $menu7 ?>">
+                <a class="nav-link" href="">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Imóveis Vendidos</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="index.php?pag=<?php echo $menu8 ?>">
+                <a class="nav-link" href="S">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Imóveis Alugados</span></a>
             </li>
@@ -163,13 +144,8 @@ $menu8 = "alugueis";
                         <i class="fa fa-bars"></i>
                     </button>
 
-
-
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-
-
-
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -199,39 +175,12 @@ $menu8 = "alugueis";
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                    <?php if ($pag == null) {
-                        include_once("home.php");
-                    } else if ($pag == $menu1) {
-                        include_once($menu1 . ".php");
-                    } else if ($pag == $menu2) {
-                        include_once($menu2 . ".php");
-                    } else if ($pag == $menu3) {
-                        include_once($menu3 . ".php");
-                    } else if ($pag == $menu4) {
-                        include_once($menu4 . ".php");
-                    } else if ($pag == $menu5) {
-                        include_once($menu5 . ".php");
-                    } else if ($pag == $menu6) {
-                        include_once($menu6 . ".php");
-                    } else if ($pag == $menu7) {
-                        include_once($menu7 . ".php");
-                    } else if ($pag == $menu8) {
-                        include_once($menu8 . ".php");
-                    } else {
-                        include_once("home.php");
-                    }
-                    ?>
-
-
-
+                    @yield('content')
                 </div>
                 <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
-
-
 
         </div>
         <!-- End of Content Wrapper -->
@@ -267,17 +216,17 @@ $menu8 = "alugueis";
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label>Nome</label>
-                                    <input value="<?php echo $nome ?>" type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
+                                    <input value="" type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
                                 </div>
 
                                 <div class="form-group">
                                     <label>CPF</label>
-                                    <input value="<?php echo $cpf ?>" type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF">
+                                    <input value="" type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF">
                                 </div>
 
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input value="<?php echo $email ?>" type="email" class="form-control" id="email" name="email" placeholder="Email">
+                                    <input value="" type="email" class="form-control" id="email" name="email" placeholder="Email">
                                 </div>
 
                                 <div class="form-group">
@@ -285,66 +234,40 @@ $menu8 = "alugueis";
                                     <input value="" type="password" class="form-control" id="text" name="senha" placeholder="Senha">
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-12">
-                                <div class="col-md-12 form-group">
-                                    <label>Foto</label>
-                                    <input value="<?php echo $img ?>" type="file" class="form-control-file" id="imagem" name="imagem" onchange="carregarImg();">
 
-                                </div>
-                                <div class="col-md-12 mb-2">
-                                    <img src="../img/profiles/<?php echo $img ?>" alt="Carregue sua Imagem" id="target" width="100%">
-                                </div>
-                            </div>
                         </div>
-
-
-
-                        <small>
-                            <div id="mensagem" class="mr-4">
-
-                            </div>
-                        </small>
-
 
 
                     </div>
                     <div class="modal-footer">
-
-
-
-                        <input value="<?php echo $idUsuario ?>" type="hidden" name="txtid" id="txtid">
-                        <input value="<?php echo $cpf ?>" type="hidden" name="antigo" id="antigo">
-
                         <button type="button" id="btn-fechar" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         <button type="submit" name="btn-salvar-perfil" id="btn-salvar-perfil" class="btn btn-primary">Salvar</button>
                     </div>
                 </form>
-
-
             </div>
         </div>
     </div>
 
 
     <!-- Core plugin JavaScript-->
-    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="./laravel/public/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="../js/sb-admin-2.min.js"></script>
+    <script src="./laravel/public/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="../vendor/chart.js/Chart.min.js"></script>
+    <script src="./laravel/public/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="../js/demo/chart-area-demo.js"></script>
-    <script src="../js/demo/chart-pie-demo.js"></script>
+    <script src="./laravel/public/js/demo/chart-area-demo.js"></script>
+    <script src="./laravel/public/js/demo/chart-pie-demo.js"></script>
 
     <!-- Page level plugins -->
-    <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="./laravel/public/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="./laravel/public/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="../js/demo/datatables-demo.js"></script>
+    <script src="./laravel/public/js/demo/datatables-demo.js"></script>
 
 </body>
 
