@@ -1,3 +1,12 @@
+<?php
+
+use App\Models\usuario;
+
+@session_start();
+$idUsuario = @$_SESSION['id_usuario'];
+$usuario = usuario::find($idUsuario);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -25,6 +34,7 @@
     <!-- Bootstrap core JavaScript-->
     <script src="{{ URL::asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ URL::asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 
     <link rel="shortcut icon" href="../../img/favicon0.ico" type="image/x-icon">
     <link rel="icon" href="../../img/favicon0.ico" type="image/x-icon">
@@ -147,8 +157,7 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php @session_start();
-                                                                                            echo @$_SESSION['nome_usuario']; ?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{$usuario->nome}}</span>
                                 <img class="img-profile rounded-circle" src="{{ URL::asset('img/sem-foto.jpg') }}">
 
                             </a>
@@ -206,21 +215,23 @@
                     </button>
                 </div>
 
-                <form id="form-perfil" method="POST" enctype="multipart/form-data">
+                <form id="form-perfil" method="POST" action="{{route('admin.editar', $idUsuario) }} ">
+                    @csrf
+                    @method('put')
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Nome</label>
-                            <input value="" type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
+                            <input value="{{$usuario->nome}}" type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
                         </div>
 
                         <div class="form-group">
                             <label>CPF</label>
-                            <input value="" type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF">
+                            <input value="{{$usuario->cpf}}" type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF">
                         </div>
 
                         <div class="form-group">
                             <label>Email</label>
-                            <input value="" type="email" class="form-control" id="email" name="email" placeholder="Email">
+                            <input value="{{$usuario->email}}" type="email" class="form-control" id="email" name="email" placeholder="Email">
                         </div>
 
                         <div class="form-group">
@@ -256,7 +267,8 @@
     <script src="{{ URL::asset('vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
 
     <!-- Page level custom scripts -->
-    <script src="{{ URL::asset('js/demo/datatables-demo.js')}}"></script>
+    <script src="{{ URL::asset('js/demo/datatables-demo.js') }}"></script>
+    <script src="{{ URL::asset('js/mascaras.js') }}"></script>
 
 </body>
 

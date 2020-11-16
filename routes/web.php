@@ -11,3 +11,5 @@ Route::post('/painel', [UsuarioController::class, 'login'])->name('usuario.login
 Route::get('/instrutores', [CadInstrutoresController::class, 'index'])->name('instrutores.index');
 Route::get('/home-admin', [AdminController::class, 'index'])->name('admin.index');
 Route::get('/', [UsuarioController::class, 'logout'])->name('usuarios.logout');
+
+Route::put('admin/{usuario}', [AdminController::class, 'edit'])->name('admin.editar');
