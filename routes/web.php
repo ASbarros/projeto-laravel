@@ -7,4 +7,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('/painel', [UsuarioController::class, 'login'])->name('usuario.login');
-Route::post('/instrutores', [CadInstrutoresController::class, 'index'])->name('instrutores.cadastro');
+Route::get('/instrutores', [CadInstrutoresController::class, 'index'])->name('instrutores.index');
