@@ -9,7 +9,7 @@ class CadInstrutoresController extends Controller
 {
     public function index()
     {
-        $instrutores = instrutore::orderby('id')->paginate();
-        return view('painels.painel-admin.instrutores.index', ['instrutores' => $instrutores]);
+        $tabela = instrutore::orderby('id')->paginate();
+        return view('painels.painel-admin.instrutores.index', ['itens' => $tabela]);
     }
 }
